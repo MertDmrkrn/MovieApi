@@ -18,3 +18,4 @@ namespace MovieApi.Application.Features.MediatorDesignPattern.Queries.CastQuerie
 		}
 	}
 }
+
