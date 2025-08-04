@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MovieApi.Application.Features.MediatorDesignPattern.Commands.CastCommands;
+using MovieApi.Application.Features.MediatorDesignPattern.Commands.TagCommands;
 using MovieApi.Persistence.Context;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Application.Features.MediatorDesignPattern.Handlers.TagHandler
 {
-	public class RemoveTagCommandHandler : IRequestHandler<RemoveCastCommand>
+	public class RemoveTagCommandHandler : IRequestHandler<RemoveTagCommand>
 	{
 		private readonly MovieContext _context;
 
@@ -18,9 +19,9 @@ namespace MovieApi.Application.Features.MediatorDesignPattern.Handlers.TagHandle
 			_context = context;
 		}
 
-		public async Task Handle(RemoveCastCommand request, CancellationToken cancellationToken)
+		public async Task Handle(RemoveTagCommand request, CancellationToken cancellationToken)
 		{
-			var value = await _context.Tags.FindAsync(request.CastID);
+			var value = await _context.Tags.FindAsync(request.TagID);
 			_context.Tags.Remove(value);
 			await _context.SaveChangesAsync();
 		}

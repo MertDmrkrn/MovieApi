@@ -39,7 +39,7 @@ namespace MovieApi.WebApi.Controllers
 		}
 
 		[HttpDelete]
-		public async Task<IActionResult> DeleteTag(int id)
+		public async Task<IActionResult> RemoveTag(int id)
 		{
 			await _mediator.Send(new RemoveTagCommand(id));
 			return Ok("Silme İşlemi Başarıyla Gerçekleştirildi.");
